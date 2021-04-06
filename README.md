@@ -1,3 +1,4 @@
-# template
+# flutter-android
 
-This repository contains basic files needed to setup new image repository with tests and auto uploads
+This image contains flutter and android buildtools.
+It's intended to use in CI, for building and testing flutter applications for android

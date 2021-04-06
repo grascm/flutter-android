@@ -5,6 +5,9 @@ on:
 jobs:
   build_image:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [29, 30]
     steps:
       - name: Produce image tag
         id: tag
@@ -22,4 +25,6 @@ jobs:
         uses: docker/build-push-action@v2.3.0
         with:
           push: true
-          tags: ${{ steps.tag.outputs.res }}
+          tags: "${{ steps.tag.outputs.res }}:${{ matrix.version }}"
+          build-args: |
+            BUILDTOOLS_VERSION=${{ matrix.version }}
